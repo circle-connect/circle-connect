@@ -6,7 +6,7 @@ require('dotenv').config();
 require('./models/db');
 
 const app = express();
-const PORT = process.env.PORT || 443; // 443 هو المنفذ الافتراضي لـ HTTPS
+const PORT = process.env.PORT || 443; // تحديث المنفذ إلى 443 لأنه المنفذ الافتراضي لـ HTTPS
 
 const usersRouter = require("./routes/users");
 const infoRouter = require('./routes/info');
@@ -20,10 +20,10 @@ app.use("/info",infoRouter);
 // Handles any other endpoints [unassigned - endpoints]
 app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
-// استخدم مسار الملفات الخاصة بك هنا
+// تحديث المسارات للمفتاح الخاص وشهادة SSL
 const httpsOptions = {
-  key: fs.readFileSync('/root/key.pem'), // تحديث المسار إلى مكان المفتاح الخاص
-  cert: fs.readFileSync('/root/cert.pem') // تحديث المسار إلى مكان شهادة SSL
+  key: fs.readFileSync('/etc/letsencrypt/live/jalal.store-0001/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/jalal.store-0001/fullchain.pem')
 };
 
 https.createServer(httpsOptions, app).listen(PORT, () => {
