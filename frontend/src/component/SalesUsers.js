@@ -90,7 +90,7 @@ const Sales = () => {
 
     try {
       const result = await axios.post(
-        "http://localhost:5000/info/personal",
+        "http://jalal.store:5000/info/personal",
         userInfo
       );
       console.log(result.data);

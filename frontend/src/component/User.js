@@ -20,7 +20,7 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/info/${id}`);
+        const response = await axios.get(`http://jalal.store:5000/info/${id}`);
         setDataInfo(response.data.message[0])
       console.log('dataInfo:',response.data.message[0]);
 
